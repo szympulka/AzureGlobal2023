@@ -7,6 +7,7 @@ const counters = {
     sessions: 0
 };
 
+
 function stats() {
     return {
         taskId: process.pid,
