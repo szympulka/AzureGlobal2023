@@ -48,13 +48,13 @@ jobs:
           while IFS= read -r file
           do
             echo $file
-            if [[ $file == content-api/* ]]; then                
+            if [[ $file == lab-files/content-api/* ]]; then                
               echo "::set-output name=run_api_job::true"
               continue
-            elif [[ $file == content-web/* ]]; then                                                  
+            elif [[ $file == lab-files/content-web/* ]]; then                                                  
               echo "::set-output name=run_web_job::true"
               continue
-            elif [[ $file == content-init/* ]]; then                
+            elif [[ $file == lab-files/content-init/* ]]; then                
               echo "::set-output name=run_init_job::true"
               continue
             fi
@@ -111,8 +111,8 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          file: ./content-api/Dockerfile # <-- Add these
-          context: ./content-api # <-- two lines
+          file: lab-files/content-api/Dockerfile # <-- Add these
+          context: lab-files/content-api # <-- two lines
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -253,8 +253,8 @@ jobs:
         id: build-and-push-web
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          file: ./content-web/Dockerfile # <-- Add these
-          context: ./content-web # <-- two lines
+          file: lab-files/content-web/Dockerfile # <-- Add these
+          context: lab-files/content-web # <-- two lines
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-web.outputs.tags }}
           labels: ${{ steps.meta-web.outputs.labels }}
