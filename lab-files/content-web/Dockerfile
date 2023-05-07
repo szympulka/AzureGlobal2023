@@ -1,3 +1,5 @@
+# Testing
+
 # Dockerfile for content-web
 # This is the base image that can be used
 FROM node:dubnium AS build
